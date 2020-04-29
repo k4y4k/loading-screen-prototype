@@ -5,7 +5,6 @@
   "author": "kayak <kayak@kayak.rocks>",
   "private": true,
   "dependencies": {
-    "gulp-autoprefixer": "7.0.1",
     "gulp-babel": "8.0.0",
     "gulp-imagemin": "7.1.0",
     "pixi.js": "5.2.3"
@@ -14,13 +13,17 @@
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
     "@commitlint/prompt-cli": "8.3.5",
+    "del": "5.1.0",
     "gulp": "4.0.2",
+    "gulp-autoprefixer": "7.0.1",
+    "gulp-load-plugins": "2.0.3",
     "husky": "4.2.5",
     "prettier": "2.0.5",
     "pretty-quick": "2.0.1"
   },
   "scripts": {
-    "commit": "commit"
+    "commit": "commit",
+    "start": "gulp"
   },
   "husky": {
     "hooks": {
