@@ -26,9 +26,7 @@
     "gulp-pug": "4.0.1",
     "husky": "4.2.5",
     "prettier": "2.0.5",
-    "pretty-quick": "2.0.1",
-    "rollup-stream": "1.24.1",
-    "vinyl-source-stream": "2.0.0"
+    "pretty-quick": "2.0.1"
   },
   "scripts": {
     "commit": "commit",
