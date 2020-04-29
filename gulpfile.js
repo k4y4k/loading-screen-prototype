@@ -24,7 +24,7 @@ const preprocessHTML = () => {
 
 const bundle = (done) => {
   execSync(
-    'NODE_ENV=development parcel build ./src/js/index.js -d out/js --experimental-scope-hoisting  --no-minify --no-source-maps',
+    'parcel build ./src/js/index.js -d out/js --no-source-maps --detailed-report',
     // eslint-disable-next-line func-names
     function (err, stdout, stderr) {
       // eslint-disable-next-line no-console
@@ -37,7 +37,12 @@ const bundle = (done) => {
   done()
 }
 
-const reload = () => browserSync.reload()
+const reload = (done) => {
+  browserSync.reload()
+  done()
+}
+
+const compileCSS = () => gulp.src('src/**/*.css').pipe(gulp.dest('out/css'))
 
 const compileHTML = () =>
   // the .pug files in tmp/ have been preprocessed
@@ -56,12 +61,14 @@ const browsersync = () => {
   })
 
   gulp.watch('src/**/*.js', gulp.series(bundle, reload))
+  gulp.watch('src/**/*.pug', gulp.series(preprocessHTML, compileHTML, reload))
 }
 
 exports.default = gulp.series(
   clean,
   minifyImages,
   bundle,
+  compileCSS,
   preprocessHTML,
   compileHTML,
   cleanTemp,
