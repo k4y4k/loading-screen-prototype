@@ -1,2 +1,3 @@
 *.kra
 node_modules
+out/
