@@ -2,21 +2,33 @@ const gulp = require('gulp')
 const del = require('del')
 const gulpLoadPlugins = require('gulp-load-plugins')
 const browserSync = require('browser-sync').create()
+const rollup = require('rollup-stream')
+const source = require('vinyl-source-stream')
 
 const plugins = gulpLoadPlugins()
 
-const clean = () => del(['out/**/*', 'tmp/**/*'])
+const clean = () => del(['out', 'tmp'])
 
 const minifyImages = () =>
   gulp.src('src/img/*').pipe(plugins.imagemin()).pipe(gulp.dest('out/img'))
 
 const preprocessHTML = () => {
   var target = gulp.src('src/pug/index.pug')
-  // It's not necessary to read the files (will speed up things), we're only after their paths:
+  // It's not necessary to read the files (will speed up things),
+  // we're only after their paths:
   var sources = gulp.src(['src/**/*.js', 'src/**/*.css'], { read: false })
 
   return target.pipe(plugins.inject(sources)).pipe(gulp.dest('tmp'))
 }
+
+const bundle = () =>
+  rollup({
+    input: 'src/js/index.js',
+    format: 'iife',
+    name: 'woomy',
+  })
+    .pipe(source('index.js'))
+    .pipe(gulp.dest('./out/js'))
 
 const compileHTML = () =>
   // the .pug files in tmp/ have been preprocessed
@@ -37,9 +49,12 @@ const browsersync = () => {
 
 exports.default = gulp.series(
   clean,
-  minifyImages,
+  // minifyImages,
+  bundle,
   preprocessHTML,
   compileHTML,
   cleanTemp,
   browsersync
 )
+
+exports.clean = clean
