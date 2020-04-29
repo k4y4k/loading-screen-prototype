@@ -1,13 +1,15 @@
 const gulp = require('gulp')
-const imagemin = require('gulp-imagemin')
+const del = require('del')
+const gulpLoadPlugins = require('gulp-load-plugins')
+const plugins = gulpLoadPlugins()
 
-function images(done) {
-  gulp.src('src/img/*').pipe(imagemin()).pipe(gulp.dest('out/img'))
+function minifyImages() {
+  return gulp
+    .src('src/img/*')
+    .pipe(plugins.imagemin())
+    .pipe(gulp.dest('out/img'))
 }
 
-function defaultTask(done) {
-  // place code for your default task here
-  done()
-}
+const clean = () => del(['out/**/*'])
 
-exports.default = defaultTask
+exports.default = gulp.series(clean, minifyImages)
