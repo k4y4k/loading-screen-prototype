@@ -1,6 +1,8 @@
 const gulp = require('gulp')
 const del = require('del')
 const gulpLoadPlugins = require('gulp-load-plugins')
+const browserSync = require('browser-sync').create()
+
 const plugins = gulpLoadPlugins()
 
 const clean = () => del(['out/**/*', 'tmp/**/*'])
@@ -25,10 +27,19 @@ const compileHTML = () =>
 
 const cleanTemp = () => del(['tmp/**/*'])
 
+const browsersync = () => {
+  browserSync.init({
+    server: {
+      baseDir: 'out/',
+    },
+  })
+}
+
 exports.default = gulp.series(
   clean,
   minifyImages,
   preprocessHTML,
   compileHTML,
-  cleanTemp
+  cleanTemp,
+  browsersync
 )
