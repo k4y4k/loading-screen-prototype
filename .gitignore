@@ -1,3 +1,4 @@
 *.kra
 node_modules
 out/
+.cache/

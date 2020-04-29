@@ -2,8 +2,7 @@ const gulp = require('gulp')
 const del = require('del')
 const gulpLoadPlugins = require('gulp-load-plugins')
 const browserSync = require('browser-sync').create()
-const rollup = require('rollup-stream')
-const source = require('vinyl-source-stream')
+const { execSync } = require('child_process')
 
 const plugins = gulpLoadPlugins()
 
@@ -23,14 +22,22 @@ const preprocessHTML = () => {
     .pipe(gulp.dest('tmp'))
 }
 
-const bundle = () =>
-  rollup({
-    input: 'src/js/index.js',
-    format: 'iife',
-    name: 'woomy',
-  })
-    .pipe(source('index.js'))
-    .pipe(gulp.dest('./out/js'))
+const bundle = (done) => {
+  execSync(
+    'NODE_ENV=development parcel build ./src/js/index.js -d out/js --experimental-scope-hoisting  --no-minify --no-source-maps',
+    // eslint-disable-next-line func-names
+    function (err, stdout, stderr) {
+      // eslint-disable-next-line no-console
+      console.log(stdout)
+      // eslint-disable-next-line no-console
+      console.log(stderr)
+    }
+  )
+
+  done()
+}
+
+const reload = () => browserSync.reload()
 
 const compileHTML = () =>
   // the .pug files in tmp/ have been preprocessed
@@ -47,6 +54,8 @@ const browsersync = () => {
       baseDir: 'out/',
     },
   })
+
+  gulp.watch('src/**/*.js', gulp.series(bundle, reload))
 }
 
 exports.default = gulp.series(
