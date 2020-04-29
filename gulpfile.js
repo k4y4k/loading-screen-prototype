@@ -13,12 +13,14 @@ const minifyImages = () =>
   gulp.src('src/img/*').pipe(plugins.imagemin()).pipe(gulp.dest('out/img'))
 
 const preprocessHTML = () => {
-  var target = gulp.src('src/pug/index.pug')
+  const target = gulp.src('src/pug/index.pug')
   // It's not necessary to read the files (will speed up things),
   // we're only after their paths:
-  var sources = gulp.src(['src/**/*.js', 'src/**/*.css'], { read: false })
+  const sources = gulp.src(['out/**/*.js', 'out/**/*.css'], { read: false })
 
-  return target.pipe(plugins.inject(sources)).pipe(gulp.dest('tmp'))
+  return target
+    .pipe(plugins.inject(sources, { ignorePath: '/out/' }))
+    .pipe(gulp.dest('tmp'))
 }
 
 const bundle = () =>
@@ -49,7 +51,7 @@ const browsersync = () => {
 
 exports.default = gulp.series(
   clean,
-  // minifyImages,
+  minifyImages,
   bundle,
   preprocessHTML,
   compileHTML,
