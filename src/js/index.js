@@ -1,6 +1,8 @@
-const one = 1
+import * as PIXI from 'pixi.js'
 
-const two = one + 1
+let type = 'WebGL'
+if (!PIXI.utils.isWebGLSupported()) {
+  type = 'canvas'
+}
 
-// eslint-disable-next-line no-console
-console.log(two)
+PIXI.utils.sayHello(type)
