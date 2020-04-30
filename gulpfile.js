@@ -24,7 +24,7 @@ const preprocessHTML = () => {
 
 const bundle = (done) => {
   execSync(
-    'parcel build ./src/js/index.js -d out/js --no-source-maps --detailed-report',
+    'parcel build ./src/js/index.js -d out/',
     // eslint-disable-next-line func-names
     function (err, stdout, stderr) {
       // eslint-disable-next-line no-console
@@ -76,3 +76,4 @@ exports.default = gulp.series(
 )
 
 exports.clean = clean
+exports.bundle = bundle
