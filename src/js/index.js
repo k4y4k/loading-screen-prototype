@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 
-let app = new PIXI.Application({ resizeTo: window }),
+let app = new PIXI.Application({ resizeTo: window, antialias: true }),
   loader = new PIXI.Loader(),
   resources = PIXI.Loader.resources,
   Sprite = PIXI.Sprite,
@@ -9,7 +9,16 @@ let app = new PIXI.Application({ resizeTo: window }),
   alexDimensions = [],
   alexRatio = 0,
   cecilleDimensions = [],
-  cecilleRatio = 0
+  cecilleRatio = 0,
+  alex,
+  cecille,
+  alexIsStepping = true,
+  cecilleIsStepping = true
+
+const alexContactHeight = 1000
+const alexPassHeight = 900
+const cecilleContactHeight = 1133
+const cecillePassHeight = 1100
 
 // Add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view)
@@ -37,8 +46,8 @@ function setup(loader, resources) {
   console.log('All files loaded')
 
   // assign the Sprites the textures we loaded earlier
-  const alex = new Sprite.from(resources.alex.texture)
-  const cecille = new Sprite.from(resources.cecille.texture)
+  alex = new Sprite.from(resources.alex.texture)
+  cecille = new Sprite.from(resources.cecille.texture)
 
   // save ratios and orig. dimensions
   alexDimensions = [alex.height, alex.width]
@@ -59,13 +68,36 @@ function setup(loader, resources) {
   cecille.anchor.set(0.5, 0.9)
 
   // place them
-  alex.x = app.screen.width * 0.25
-  alex.y = app.screen.height
-  cecille.x = app.screen.width * 0.25
-  // cecille's legs are a bit longer than alex's
-  cecille.y = app.screen.height + app.screen.height * 0.2
+  alex.x = app.screen.width * 0.5
+  alex.y = alexContactHeight
+  cecille.x = app.screen.width * 0.5
+  cecille.y = cecilleContactHeight
 
   // and finally: display them. Together at last 💑
   app.stage.addChild(alex)
   app.stage.addChild(cecille)
+
+  app.ticker.add((delta) => gameLoop(delta))
+}
+
+function gameLoop(delta) {
+  if (alexIsStepping) {
+    alex.y--
+  } else {
+    alex.y++
+  }
+
+  if (cecilleIsStepping) {
+    cecille.y = cecille.y - 3
+  } else {
+    cecille.y = cecille.y + 3
+  }
+
+  if (cecille.y < cecillePassHeight || cecille.y > cecilleContactHeight) {
+    cecilleIsStepping = !cecilleIsStepping
+  }
+
+  if (alex.y === alexPassHeight || alex.y === alexContactHeight) {
+    alexIsStepping = !alexIsStepping
+  }
 }
