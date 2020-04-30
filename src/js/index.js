@@ -17,8 +17,8 @@ let app = new PIXI.Application({ resizeTo: window, antialias: true }),
 
 const alexContactHeight = 1000
 const alexPassHeight = 900
-const cecilleContactHeight = 1133
-const cecillePassHeight = 1100
+const cecilleContactHeight = 1166
+const cecillePassHeight = 1133
 
 // Add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view)
