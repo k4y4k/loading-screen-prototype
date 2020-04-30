@@ -18,10 +18,10 @@ let app = new PIXI.Application({ resizeTo: window, antialias: true }),
 // TODO: these contact and pass heights are from a 1680×1050 display and will
 // probably need tweaking on e.g. 720p / 1080p displays :/
 
-const alexContactHeight = 1000
-const alexPassHeight = 900
-const cecilleContactHeight = 1166
-const cecillePassHeight = 1133
+const alexContactHeight = 1000,
+  alexPassHeight = 900,
+  cecilleContactHeight = 1166,
+  cecillePassHeight = 1133
 
 // Add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view)
