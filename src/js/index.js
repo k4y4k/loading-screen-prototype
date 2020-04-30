@@ -1,6 +1,15 @@
 import * as PIXI from 'pixi.js'
 
-let app = new PIXI.Application({ resizeTo: window })
+let app = new PIXI.Application({ resizeTo: window }),
+  loader = new PIXI.Loader(),
+  resources = PIXI.Loader.resources,
+  Sprite = PIXI.Sprite,
+  // TODO: in the future, I want to be able to adapt to other screen sizes, so
+  // we need to save the ratio of the sprites for some quick maths:
+  alexDimensions = [],
+  alexRatio = 0,
+  cecilleDimensions = [],
+  cecilleRatio = 0
 
 // Add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view)
@@ -9,22 +18,54 @@ document.body.appendChild(app.view)
 app.renderer.view.style.position = 'absolute'
 app.renderer.view.style.display = 'block'
 
-// load in alex
-const alex = PIXI.Sprite.from('img/alex_silhou.png')
+// load in alex & cecille
+loader
+  .add('alex', 'img/alex_silhou.png')
+  .add('cecille', 'img/cecille_silhou.png')
+  .load(setup)
 
-// the image is (intentionally) just a little bit too large. Let's scale him
-// down just a tad.
-// alex.setTransform(0, 0, 0.5, 0.5)
+// called once per loaded file
+loader.onLoad.add((loader, res) => {
+  console.log(`${res.name}.${res.extension} loaded (${loader.progress}%)`)
+})
 
-// move his anchor point so we can place him correctly
-alex.anchor.set(0.5, 0.85)
+// called once when the queued resources all load.
+loader.onComplete.add(() => console.log('All done!'))
 
-// place him
-alex.x = app.screen.width * 0.25
-alex.y = app.screen.height
+// This will run when the image has loaded
+function setup(loader, resources) {
+  console.log('All files loaded')
 
-app.stage.addChild(alex)
+  // assign the Sprites the textures we loaded earlier
+  const alex = new Sprite.from(resources.alex.texture)
+  const cecille = new Sprite.from(resources.cecille.texture)
 
-// TODO: add event listener to reshuffle sizes on window resize
+  // save ratios and orig. dimensions
+  alexDimensions = [alex.height, alex.width]
+  alexRatio = alexDimensions[0] / alexDimensions[1]
+  cecilleDimensions = [cecille.height, cecille.width]
+  cecilleRatio = cecilleDimensions[0] / cecilleDimensions[1]
 
-console.log('💀')
+  // the images are (intentionally) just a little bit too large. Let's scale
+  // them down just a tad.
+  alex.setTransform(0, 0, 0.75, 0.75)
+
+  // cecillian is (a lot) smaller than alex is
+  cecille.setTransform(0, 0, 0.45, 0.45)
+
+  // move their anchor points so we can place them correctly:
+  alex.anchor.set(0.5, 0.9)
+  // FIXME: cecille's sprite legs are a bit longer than alex's
+  cecille.anchor.set(0.5, 0.9)
+
+  // place them
+  alex.x = app.screen.width * 0.25
+  alex.y = app.screen.height
+  cecille.x = app.screen.width * 0.25
+  // cecille's legs are a bit longer than alex's
+  cecille.y = app.screen.height + app.screen.height * 0.2
+
+  // and finally: display them. Together at last 💑
+  app.stage.addChild(alex)
+  app.stage.addChild(cecille)
+}
