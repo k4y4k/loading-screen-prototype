@@ -15,6 +15,9 @@ let app = new PIXI.Application({ resizeTo: window, antialias: true }),
   alexIsStepping = true,
   cecilleIsStepping = true
 
+// TODO: these contact and pass heights are from a 1680×1050 display and will
+// probably need tweaking on e.g. 720p / 1080p displays :/
+
 const alexContactHeight = 1000
 const alexPassHeight = 900
 const cecilleContactHeight = 1166
@@ -68,9 +71,9 @@ function setup(loader, resources) {
   cecille.anchor.set(0.5, 0.9)
 
   // place them
-  alex.x = app.screen.width * 0.5
+  alex.x = app.screen.width * 0.25
   alex.y = alexContactHeight
-  cecille.x = app.screen.width * 0.5
+  cecille.x = app.screen.width * 0.2
   cecille.y = cecilleContactHeight
 
   // and finally: display them. Together at last 💑
