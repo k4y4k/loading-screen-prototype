@@ -23,7 +23,22 @@ const preprocessHTML = () => {
     .pipe(gulp.dest('tmp'))
 }
 
-const bundle = (done) => {
+const compileJS = (done) => {
+  execSync(
+    'parcel build ./src/js/index.js -d out/ --no-source-maps',
+    // eslint-disable-next-line func-names
+    function (err, stdout, stderr) {
+      // eslint-disable-next-line no-console
+      console.log(stdout)
+      // eslint-disable-next-line no-console
+      console.log(stderr)
+    }
+  )
+
+  done()
+}
+
+const bundleJS = (done) => {
   execSync(
     'parcel build ./src/js/index.js -d out/',
     // eslint-disable-next-line func-names
@@ -70,32 +85,32 @@ const browsersync = () => {
     },
   })
 
-  gulp.watch('src/**/*.js', gulp.series(bundle, reload))
+  gulp.watch('src/**/*.js', gulp.series(bundleJS, reload))
   gulp.watch('src/**/*.css', gulp.series(compileCSS, reload))
   gulp.watch('src/**/*.pug', gulp.series(preprocessHTML, compileHTML, reload))
 }
 
-if (process.env.TRAVIS === true) {
-  exports.default = gulp.series(
-    minifyImages,
-    bundle,
-    compileCSS,
-    preprocessHTML,
-    compileHTML,
-    cleanTemp
-  )
-} else {
-  exports.default = gulp.series(
-    clean,
-    minifyImages,
-    bundle,
-    compileCSS,
-    preprocessHTML,
-    compileHTML,
-    cleanTemp,
-    browsersync
-  )
-}
+exports.ci = gulp.series(
+  clean,
+  minifyImages,
+  compileJS,
+  compileCSS,
+  preprocessHTML,
+  compileHTML,
+  cleanTemp
+)
+
+exports.default = gulp.series(
+  clean,
+  minifyImages,
+  bundleJS,
+  compileCSS,
+  preprocessHTML,
+  compileHTML,
+  cleanTemp,
+  browsersync
+)
 
 exports.clean = clean
-exports.bundle = bundle
+exports.bundleJS = bundleJS
+exports.compileJS = compileJS

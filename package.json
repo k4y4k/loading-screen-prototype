@@ -31,7 +31,8 @@
   "scripts": {
     "commit": "commit",
     "start": "gulp",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "travis": "gulp ci"
   },
   "husky": {
     "hooks": {
