@@ -1,29 +1,26 @@
+/* eslint-disable new-cap, no-irregular-whitespace */
+
 import * as PIXI from 'pixi.js'
 
-import './overlay.js'
+import './overlay'
 
-let app = new PIXI.Application({ resizeTo: window, antialias: true }),
-  loader = new PIXI.Loader(),
-  resources = PIXI.Loader.resources,
-  Sprite = PIXI.Sprite,
-  // TODO: in the future, I want to be able to adapt to other screen sizes, so
-  // we need to save the ratio of the sprites for some quick maths:
-  alexDimensions = [],
-  alexRatio = 0,
-  cecilleDimensions = [],
-  cecilleRatio = 0,
-  alex,
-  cecille,
-  alexIsStepping = true,
-  cecilleIsStepping = true
+const app = new PIXI.Application({ resizeTo: window, antialias: true })
+const loader = new PIXI.Loader()
+const { Sprite } = PIXI
+let alex
+let cecille
+let alexIsStepping = true
+let cecilleIsStepping = true
+
+// TODO: in the future, I want to be able to adapt to other screen sizes
 
 // TODO: these contact and pass heights are from a 1680×1050 display and will
 // probably need tweaking on e.g. 720p / 1080p displays :/
 
-const alexContactHeight = 1000,
-  alexPassHeight = 950,
-  cecilleContactHeight = 1199,
-  cecillePassHeight = 1166
+const alexContactHeight = 1000
+const alexPassHeight = 950
+const cecilleContactHeight = 1199
+const cecillePassHeight = 1166
 
 // Add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view)
@@ -32,33 +29,35 @@ document.body.appendChild(app.view)
 app.renderer.view.style.position = 'absolute'
 app.renderer.view.style.display = 'block'
 
-// load in alex & cecille
-loader
-  .add('alex', 'img/alex_silhou.png')
-  .add('cecille', 'img/cecille_silhou.png')
-  .load(setup)
+function gameLoop() {
+  if (alexIsStepping) {
+    alex.y -= 1
+  } else {
+    alex.y += 1
+  }
 
-// called once per loaded file
-loader.onLoad.add((loader, res) => {
-  console.log(`${res.name}.${res.extension} loaded (${loader.progress}%)`)
-})
+  if (cecilleIsStepping) {
+    cecille.y -= 3
+  } else {
+    cecille.y += 3
+  }
 
-// called once when the queued resources all load.
-loader.onComplete.add(() => console.log('All done!'))
+  if (cecille.y < cecillePassHeight || cecille.y > cecilleContactHeight) {
+    cecilleIsStepping = !cecilleIsStepping
+  }
+
+  if (alex.y === alexPassHeight || alex.y === alexContactHeight) {
+    alexIsStepping = !alexIsStepping
+  }
+}
 
 // This will run when the image has loaded
+// eslint-disable-next-line no-shadow
 function setup(loader, resources) {
-  console.log('All files loaded')
-
   // assign the Sprites the textures we loaded earlier
+
   alex = new Sprite.from(resources.alex.texture)
   cecille = new Sprite.from(resources.cecille.texture)
-
-  // save ratios and orig. dimensions
-  alexDimensions = [alex.height, alex.width]
-  alexRatio = alexDimensions[0] / alexDimensions[1]
-  cecilleDimensions = [cecille.height, cecille.width]
-  cecilleRatio = cecilleDimensions[0] / cecilleDimensions[1]
 
   // the images are (intentionally) just a little bit too large. Let's scale
   // them down just a tad.
@@ -72,7 +71,7 @@ function setup(loader, resources) {
   // FIXME: cecille's sprite legs are a bit longer than alex's
   cecille.anchor.set(0.5, 0.9)
 
-  // place them
+  // place them onscreen
   alex.x = app.screen.width * 0.33
   alex.y = alexContactHeight
   cecille.x = app.screen.width * 0.3
@@ -85,24 +84,15 @@ function setup(loader, resources) {
   app.ticker.add((delta) => gameLoop(delta))
 }
 
-function gameLoop(delta) {
-  if (alexIsStepping) {
-    alex.y--
-  } else {
-    alex.y++
-  }
+// load in alex & cecille
+loader
+  .add('alex', 'img/alex_silhou.png')
+  .add('cecille', 'img/cecille_silhou.png')
+  .load(setup)
 
-  if (cecilleIsStepping) {
-    cecille.y = cecille.y - 3
-  } else {
-    cecille.y = cecille.y + 3
-  }
-
-  if (cecille.y < cecillePassHeight || cecille.y > cecilleContactHeight) {
-    cecilleIsStepping = !cecilleIsStepping
-  }
-
-  if (alex.y === alexPassHeight || alex.y === alexContactHeight) {
-    alexIsStepping = !alexIsStepping
-  }
-}
+// called once per loaded file
+// eslint-disable-next-line no-shadow
+loader.onLoad.add((loader, res) => {
+  // eslint-disable-next-line no-console
+  console.log(`${res.name}.${res.extension} loaded (${loader.progress}%)`)
+})
