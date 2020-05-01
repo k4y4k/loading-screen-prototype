@@ -11,6 +11,9 @@ script:
 
 deploy:
   provider: pages
+  skip_cleanup: true
+  # travis: skip cleanup depreciated, don't use
+  # also travis: YOU DIDN'T SAY SKIP CLEANUP, I'M SKIPPING IT
   github_token: $GITHUB_TOKEN
   on:
     all_branches: true
