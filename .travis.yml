@@ -6,7 +6,7 @@ before_script:
 
 script:
   - yarn lint
-  # - yarn travis
+  - yarn travis
   - ls
 
 deploy:
