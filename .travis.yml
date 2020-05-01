@@ -3,6 +3,14 @@ node_js: lts/*
 
 before_script:
   - npm install -g gulp-cli parcel-bundler eslint
+
 script:
   - yarn lint
   - yarn travis
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: gh-pages
