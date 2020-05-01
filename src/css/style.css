@@ -2,3 +2,44 @@
   padding: 0;
   margin: 0;
 }
+
+.text-overlay {
+  color: #22d07f;
+  font-family: 'Inter', sans-serif;
+  padding: 25px 50px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+  z-index: 2;
+  max-width: 33vw;
+}
+
+.character-images {
+  margin: 5px;
+}
+
+.character-image {
+  display: inline-block;
+  font-size: 32pt;
+}
+
+#overlay-middle-text {
+  margin-top: 20px;
+}
+
+#overlay-bottom-text {
+  margin-top: 20px;
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: 1px solid #22d07f;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+#overlay-bottom-text:hover {
+  background: #22d07f;
+  color: black;
+  display: block;
+}
