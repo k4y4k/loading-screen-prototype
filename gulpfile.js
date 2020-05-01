@@ -75,16 +75,27 @@ const browsersync = () => {
   gulp.watch('src/**/*.pug', gulp.series(preprocessHTML, compileHTML, reload))
 }
 
-exports.default = gulp.series(
-  clean,
-  minifyImages,
-  bundle,
-  compileCSS,
-  preprocessHTML,
-  compileHTML,
-  cleanTemp,
-  browsersync
-)
+if (process.env.TRAVIS === true) {
+  exports.default = gulp.series(
+    minifyImages,
+    bundle,
+    compileCSS,
+    preprocessHTML,
+    compileHTML,
+    cleanTemp
+  )
+} else {
+  exports.default = gulp.series(
+    clean,
+    minifyImages,
+    bundle,
+    compileCSS,
+    preprocessHTML,
+    compileHTML,
+    cleanTemp,
+    browsersync
+  )
+}
 
 exports.clean = clean
 exports.bundle = bundle
