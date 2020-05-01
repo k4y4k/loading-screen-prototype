@@ -1,5 +1,7 @@
 import * as PIXI from 'pixi.js'
 
+import './overlay.js'
+
 let app = new PIXI.Application({ resizeTo: window, antialias: true }),
   loader = new PIXI.Loader(),
   resources = PIXI.Loader.resources,
@@ -19,7 +21,7 @@ let app = new PIXI.Application({ resizeTo: window, antialias: true }),
 // probably need tweaking on e.g. 720p / 1080p displays :/
 
 const alexContactHeight = 1000,
-  alexPassHeight = 900,
+  alexPassHeight = 950,
   cecilleContactHeight = 1166,
   cecillePassHeight = 1133
 
@@ -71,9 +73,9 @@ function setup(loader, resources) {
   cecille.anchor.set(0.5, 0.9)
 
   // place them
-  alex.x = app.screen.width * 0.25
+  alex.x = app.screen.width * 0.33
   alex.y = alexContactHeight
-  cecille.x = app.screen.width * 0.2
+  cecille.x = app.screen.width * 0.3
   cecille.y = cecilleContactHeight
 
   // and finally: display them. Together at last 💑

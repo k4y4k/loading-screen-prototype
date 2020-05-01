@@ -3,6 +3,7 @@ const del = require('del')
 const gulpLoadPlugins = require('gulp-load-plugins')
 const browserSync = require('browser-sync').create()
 const { execSync } = require('child_process')
+const cleanCSS = require('gulp-clean-css')
 
 const plugins = gulpLoadPlugins()
 
@@ -42,7 +43,16 @@ const reload = (done) => {
   done()
 }
 
-const compileCSS = () => gulp.src('src/**/*.css').pipe(gulp.dest('out/css'))
+const compileCSS = () =>
+  gulp
+    .src('src/**/*.css')
+    .pipe(
+      plugins.autoprefixer({
+        cascade: false,
+      })
+    )
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('out/'))
 
 const compileHTML = () =>
   // the .pug files in tmp/ have been preprocessed
@@ -61,6 +71,7 @@ const browsersync = () => {
   })
 
   gulp.watch('src/**/*.js', gulp.series(bundle, reload))
+  gulp.watch('src/**/*.css', gulp.series(compileCSS, reload))
   gulp.watch('src/**/*.pug', gulp.series(preprocessHTML, compileHTML, reload))
 }
 
