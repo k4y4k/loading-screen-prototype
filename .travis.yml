@@ -9,7 +9,7 @@ script:
   - yarn travis
   - ls
   # move everything in out up to root?
-  - cp ./out/* .
+  - cp -r ./out/* .
 
 deploy:
   provider: pages
