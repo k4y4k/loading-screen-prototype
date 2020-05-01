@@ -23,9 +23,25 @@ const preprocessHTML = () => {
     .pipe(gulp.dest('tmp'))
 }
 
+const ciPreprocessHTML = () => {
+  const target = gulp.src('src/pug/index.pug')
+  // It's not necessary to read the files (will speed up things),
+  // we're only after their paths:
+  const sources = gulp.src(['out/**/*.js', 'out/**/*.css'], { read: false })
+
+  return target
+    .pipe(
+      plugins.inject(sources, {
+        ignorePath: '/out/',
+        addPrefix: 'loading-screen-prototype',
+      })
+    )
+    .pipe(gulp.dest('tmp'))
+}
+
 const compileJS = (done) => {
   execSync(
-    'parcel build ./src/js/index.js -d out/ --no-source-maps',
+    'parcel build ./src/js/index.js -d out/ --no-source-maps --public-url ./loading-screen-prototype/',
     // eslint-disable-next-line func-names
     function (err, stdout, stderr) {
       // eslint-disable-next-line no-console
@@ -95,7 +111,7 @@ exports.ci = gulp.series(
   minifyImages,
   compileJS,
   compileCSS,
-  preprocessHTML,
+  ciPreprocessHTML,
   compileHTML,
   cleanTemp
 )
