@@ -5,7 +5,7 @@
   "author": "kayak <kayak@kayak.rocks>",
   "private": true,
   "dependencies": {
-    "pixi.js": "5.2.3"
+    "pixi.js": "5.2.4"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
