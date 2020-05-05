@@ -1,4 +1,10 @@
-*.kra
+*.kra*
+!*.kra
 node_modules
 out/
 .cache/
+# intermediary images from COA - not necessary to version
+src/img/*puppet/sprites/*
+# don't need to version the blender backups
+*.blend1
+
