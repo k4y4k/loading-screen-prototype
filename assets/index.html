@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
 
-    <title><%= PACKAGE.name %></title>
+    <title>Now Loading: Procrastinator Spectaculator</title>
 
     <meta
       id="viewport"
@@ -58,6 +58,19 @@
       >This webpage makes extensive use of JavaScript. Please enable JavaScript
       in your web browser to view this page.</noscript
     >
+
+    <div class="text-overlay">
+      <h1 id="overlay-heading"></h1>
+      <p id="overlay-top-text">
+        Hover over party members to customise equipment.
+      </p>
+      <p id="overlay-middle-text">On this outing:</p>
+      <div class="character-images">
+        <span class="character-image">👴</span
+        ><span class="character-image">👵</span>
+      </div>
+      <button id="overlay-bottom-text">Onwards!</button>
+    </div>
 
     <div id="pixi-content"></div>
   </body>
