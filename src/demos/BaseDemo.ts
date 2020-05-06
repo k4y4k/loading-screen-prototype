@@ -1,9 +1,8 @@
-import { Container, Sprite, Text } from 'pixi.js'
+import { Container, Text } from 'pixi.js'
 import { WIDTH, HEIGHT } from '..'
 import dragonBones from '../lib/dragonBones'
 
 export abstract class BaseDemo extends Container {
-  protected readonly _background: Sprite = Sprite.from('dragon/background.png')
   protected readonly _resources: string[] = []
 
   public constructor() {
@@ -12,8 +11,6 @@ export abstract class BaseDemo extends Container {
 
     this.x = this.stageWidth * 0.5
     this.y = this.stageHeight * 0.5
-    this._background.anchor.set(0.5)
-    this.addChild(this._background)
   }
 
   public createText(string: string): Text {
