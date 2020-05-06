@@ -25,12 +25,12 @@ export class HelloDragonBones extends BaseDemo {
 
     const factory = dragonBones.PixiFactory.factory
 
-    // factory.parseDragonBonesData(this._pixiResource["dragon/mecha_1002_101d_show/mecha_1002_101d_show_ske.json"].data);
     factory.parseDragonBonesData(
       Loader.shared.resources[
-        'dragon/mecha_1002_101d_show/mecha_1002_101d_show_ske.dbbin'
+        'dragon/mecha_1002_101d_show/mecha_1002_101d_show_ske.json'
       ].data
     )
+
     factory.parseTextureAtlasData(
       Loader.shared.resources[
         'dragon/mecha_1002_101d_show/mecha_1002_101d_show_tex.json'

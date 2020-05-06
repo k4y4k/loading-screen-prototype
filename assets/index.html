@@ -50,28 +50,73 @@
         width: 100%;
         height: 100%;
       }
+
+      .text-overlay {
+        color: #22d07f;
+        font-family: 'Inter', sans-serif;
+        padding: 25px 50px;
+        position: absolute;
+        text-align: right;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        max-width: 33vw;
+      }
+
+      .text-overlay h1,
+      .text-overlay p {
+        margin: 0;
+      }
+
+      .character-images {
+        margin: 5px;
+      }
+
+      .character-image {
+        display: inline-block;
+        font-size: 32pt;
+      }
+
+      #overlay-middle-text {
+        margin-top: 10px;
+      }
+
+      #overlay-bottom-text {
+        margin-top: 10px;
+        font-family: inherit;
+        color: inherit;
+        background: none;
+        border: 1px solid #22d07f;
+        padding: 10px;
+        text-transform: uppercase;
+      }
+
+      #overlay-bottom-text:hover {
+        background: #22d07f;
+        color: black;
+      }
     </style>
   </head>
 
   <body>
-    <noscript
-      >This webpage makes extensive use of JavaScript. Please enable JavaScript
-      in your web browser to view this page.</noscript
-    >
+    <noscript>
+      This webpage makes extensive use of JavaScript. Please enable JavaScript
+      in your web browser to view this page.
+    </noscript>
 
-    <div class="text-overlay">
-      <h1 id="overlay-heading"></h1>
-      <p id="overlay-top-text">
-        Hover over party members to customise equipment.
-      </p>
-      <p id="overlay-middle-text">On this outing:</p>
-      <div class="character-images">
-        <span class="character-image">👴</span
-        ><span class="character-image">👵</span>
+    <div id="pixi-content">
+      <div class="text-overlay">
+        <h1 id="overlay-heading"></h1>
+        <p id="overlay-top-text">
+          Hover over party members to customise equipment.
+        </p>
+        <p id="overlay-middle-text">On this outing:</p>
+        <div class="character-images">
+          <span class="character-image">👴</span
+          ><span class="character-image">👵</span>
+        </div>
+        <button id="overlay-bottom-text">Onwards!</button>
       </div>
-      <button id="overlay-bottom-text">Onwards!</button>
     </div>
-
-    <div id="pixi-content"></div>
   </body>
 </html>

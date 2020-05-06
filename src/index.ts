@@ -1,6 +1,5 @@
 import { settings, Application, PRECISION } from 'pixi.js'
 import { Main } from './Main'
-import Stats from 'stats.js'
 
 // Two constants to represent the ideal size of the game
 export const WIDTH = 1024
@@ -25,10 +24,7 @@ const app = new Application({
 
 document.getElementById('pixi-content').style.background = '#000000' //This color will be the one you see if you need to scale your game via CSS
 document.getElementById('pixi-content').appendChild(app.view)
-
-const stats = new Stats()
-document.body.appendChild(stats.dom)
-app.ticker.add(stats.update, stats)
+// document.getElementById('pixi-content').appendChild(app.view)
 
 app.stage.addChild(new Main())
 
