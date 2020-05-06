@@ -8,14 +8,8 @@ export class Preloader extends Container {
   private preloader: Loader
 
   private allDragonBonesFiles = [
-    // for AnimationBase
-    'dragon/progress_bar/progress_bar_ske.json',
-    'dragon/progress_bar/progress_bar_tex.json',
-    'dragon/progress_bar/progress_bar_tex.png',
-
     // for HelloDragonBones
     'dragon/mecha_1002_101d_show/mecha_1002_101d_show_ske.json',
-
     'dragon/mecha_1002_101d_show/mecha_1002_101d_show_tex.json',
     'dragon/mecha_1002_101d_show/mecha_1002_101d_show_tex.png',
   ]
