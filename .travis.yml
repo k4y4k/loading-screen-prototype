@@ -1,15 +1,12 @@
 language: node_js
 node_js: lts/*
 
-before_script:
-  - npm install -g gulp-cli parcel-bundler eslint
-
 script:
   - yarn lint
-  - yarn travis
+  - yarn build
   - ls
   # move everything in out up to root?
-  - cp -r ./out/* .
+  - cp -r ./build/* .
 
 deploy:
   provider: pages
