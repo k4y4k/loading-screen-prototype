@@ -2,29 +2,26 @@ import { settings, Application, PRECISION } from 'pixi.js'
 import { Main } from './Main'
 
 // Two constants to represent the ideal size of the game
-export const WIDTH = 1024
-export const HEIGHT = 1024
+export const WIDTH = window.innerWidth < 1920 ? window.innerWidth : 1920
+export const HEIGHT = window.innerHeight < 1080 ? window.innerHeight : 1080
 
 settings.STRICT_TEXTURE_CACHE = true //Forces you to load you stuff before using it
 settings.PRECISION_FRAGMENT = PRECISION.HIGH //It says that this makes iOS looks better
 settings.ANISOTROPIC_LEVEL = 16
 
 const app = new Application({
-  // forceCanvas: true,
-  backgroundColor: 0x333333,
+  backgroundColor: 0x000000,
   width: WIDTH,
   height: HEIGHT,
   resolution: window.devicePixelRatio || 1,
   autoDensity: true,
   autoStart: true,
   antialias: true,
-  clearBeforeRender: true, //squeeze every drop of performance. set to true if things go haywire
-  //resizeTo: document.getElementById("pixi-content"), // liquid rescale
+  clearBeforeRender: true,
 })
 
 document.getElementById('pixi-content').style.background = '#000000' //This color will be the one you see if you need to scale your game via CSS
 document.getElementById('pixi-content').appendChild(app.view)
-// document.getElementById('pixi-content').appendChild(app.view)
 
 app.stage.addChild(new Main())
 
