@@ -9,9 +9,9 @@ export class Preloader extends Container {
 
   private allDragonBonesFiles = [
     // for HelloDragonBones
-    'dragon/mecha_1002_101d_show/mecha_1002_101d_show_ske.json',
-    'dragon/mecha_1002_101d_show/mecha_1002_101d_show_tex.json',
-    'dragon/mecha_1002_101d_show/mecha_1002_101d_show_tex.png',
+    'cecille-puppet/export-dragonbones/cecille-puppet_ske.json',
+    'cecille-puppet/export-dragonbones/cecille-puppet_tex.json',
+    'cecille-puppet/export-dragonbones/cecille-puppet_tex.png',
   ]
   private onComplete: Function
 

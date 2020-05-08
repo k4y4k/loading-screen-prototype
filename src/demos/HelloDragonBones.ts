@@ -1,6 +1,7 @@
 import { BaseDemo } from './BaseDemo'
 import dragonBones from '../lib/dragonBones'
 import { Loader } from 'pixi.js'
+import { HEIGHT, WIDTH } from '../index'
 
 /**
  * How to use
@@ -27,27 +28,34 @@ export class HelloDragonBones extends BaseDemo {
 
     factory.parseDragonBonesData(
       Loader.shared.resources[
-        'dragon/mecha_1002_101d_show/mecha_1002_101d_show_ske.json'
+        'cecille-puppet/export-dragonbones/cecille-puppet_ske.json'
       ].data
     )
 
     factory.parseTextureAtlasData(
       Loader.shared.resources[
-        'dragon/mecha_1002_101d_show/mecha_1002_101d_show_tex.json'
+        'cecille-puppet/export-dragonbones/cecille-puppet_tex.json'
       ].data,
       Loader.shared.resources[
-        'dragon/mecha_1002_101d_show/mecha_1002_101d_show_tex.png'
+        'cecille-puppet/export-dragonbones/cecille-puppet_tex.png'
       ].texture
     )
 
     const armatureDisplay = factory.buildArmatureDisplay(
-      'mecha_1002_101d',
-      'mecha_1002_101d_show'
+      'Armature',
+      'cecille-puppet'
     )
-    armatureDisplay.animation.play('idle')
+    armatureDisplay.animation.play('New_Animation')
 
-    armatureDisplay.x = 0.0
-    armatureDisplay.y = 200.0
+    // set anchors and place
+    armatureDisplay.anchor.set(0.5, 1)
+    armatureDisplay.x = WIDTH * 0.2
+    armatureDisplay.y = HEIGHT * 0.733
+
+    // scale down
+    armatureDisplay.scale.x = 0.2
+    armatureDisplay.scale.y = 0.2
+
     this.addChild(armatureDisplay)
   }
 }

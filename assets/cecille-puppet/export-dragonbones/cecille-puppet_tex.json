@@ -4,123 +4,123 @@
   "imagePath": "cecille-puppet_tex.png",
   "name": "cecille-puppet",
   "SubTexture": [
-    { "name": "head.png.001", "x": 1477, "y": 1, "width": 553, "height": 637 },
+    { "name": "head.png.001", "x": 1480, "y": 2, "width": 553, "height": 637 },
     {
       "name": "hand.png.002",
-      "x": 980,
-      "y": 1473,
+      "x": 982,
+      "y": 1477,
       "width": 183,
       "height": 352
     },
     {
       "name": "forearm.png.002",
-      "x": 720,
-      "y": 959,
+      "x": 724,
+      "y": 961,
       "width": 191,
       "height": 463
     },
-    { "name": "bicep.png.001", "x": 1, "y": 959, "width": 225, "height": 580 },
+    { "name": "bicep.png.001", "x": 2, "y": 961, "width": 225, "height": 580 },
     {
       "name": "scarf_back.png.001",
-      "x": 1,
-      "y": 1540,
+      "x": 2,
+      "y": 1543,
       "width": 215,
       "height": 85
     },
-    { "name": "nexk.png.001", "x": 453, "y": 959, "width": 266, "height": 456 },
-    { "name": "hair.png.001", "x": 980, "y": 1, "width": 496, "height": 821 },
+    { "name": "nexk.png.001", "x": 456, "y": 961, "width": 266, "height": 456 },
+    { "name": "hair.png.001", "x": 982, "y": 2, "width": 496, "height": 821 },
     {
       "name": "hair_top.png.001",
-      "x": 1477,
-      "y": 1199,
+      "x": 1480,
+      "y": 1202,
       "width": 360,
       "height": 284
     },
     {
       "name": "fringe.png.001",
-      "x": 980,
-      "y": 1195,
+      "x": 982,
+      "y": 1198,
       "width": 376,
       "height": 277
     },
     {
       "name": "hair_gathering.png.001",
-      "x": 453,
-      "y": 1416,
+      "x": 456,
+      "y": 1419,
       "width": 246,
       "height": 314
     },
-    { "name": "eye.png.001", "x": 1357, "y": 1357, "width": 95, "height": 80 },
-    { "name": "iris.png.001", "x": 2005, "y": 639, "width": 24, "height": 64 },
+    { "name": "eye.png.001", "x": 1360, "y": 1361, "width": 95, "height": 80 },
+    { "name": "iris.png.001", "x": 2009, "y": 641, "width": 24, "height": 64 },
     {
       "name": "specs.png.001",
-      "x": 227,
-      "y": 1743,
+      "x": 229,
+      "y": 1747,
       "width": 291,
       "height": 150
     },
-    { "name": "ear.png.001", "x": 1357, "y": 1195, "width": 97, "height": 161 },
+    { "name": "ear.png.001", "x": 1360, "y": 1198, "width": 97, "height": 161 },
     {
       "name": "bun.png.001",
-      "x": 1477,
-      "y": 1484,
+      "x": 1480,
+      "y": 1488,
       "width": 180,
       "height": 324
     },
-    { "name": "skirt.png.001", "x": 1, "y": 1, "width": 978, "height": 957 },
+    { "name": "skirt.png.001", "x": 2, "y": 2, "width": 978, "height": 957 },
     {
       "name": "skirt_top.png.001",
-      "x": 1477,
-      "y": 1809,
+      "x": 1480,
+      "y": 1814,
       "width": 447,
       "height": 96
     },
     {
       "name": "shirt.png.001",
-      "x": 1477,
-      "y": 639,
+      "x": 1480,
+      "y": 641,
       "width": 527,
       "height": 559
     },
     {
       "name": "hand.png.001",
-      "x": 1164,
-      "y": 1473,
+      "x": 1167,
+      "y": 1477,
       "width": 183,
       "height": 352
     },
     {
       "name": "forearm.png.001",
-      "x": 1838,
-      "y": 1199,
+      "x": 1842,
+      "y": 1202,
       "width": 191,
       "height": 463
     },
     {
       "name": "bicep.png.002",
-      "x": 227,
-      "y": 959,
+      "x": 229,
+      "y": 961,
       "width": 225,
       "height": 580
     },
     {
       "name": "scarf_front.png.002",
-      "x": 980,
-      "y": 823,
+      "x": 982,
+      "y": 825,
       "width": 484,
       "height": 371
     },
     {
       "name": "hair_onto_shoulder.png.002",
-      "x": 720,
-      "y": 1423,
+      "x": 724,
+      "y": 1426,
       "width": 218,
       "height": 332
     },
     {
       "name": "overear_hair.png.002",
-      "x": 227,
-      "y": 1540,
+      "x": 229,
+      "y": 1543,
       "width": 222,
       "height": 202
     }

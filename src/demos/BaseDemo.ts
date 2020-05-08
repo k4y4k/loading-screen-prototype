@@ -1,4 +1,4 @@
-import { Container, Text } from 'pixi.js'
+import { Container } from 'pixi.js'
 import { WIDTH, HEIGHT } from '..'
 import dragonBones from '../lib/dragonBones'
 
@@ -9,18 +9,8 @@ export abstract class BaseDemo extends Container {
     super()
     dragonBones.PixiFactory.factory.clear()
 
-    this.x = this.stageWidth * 0.5
-    this.y = this.stageHeight * 0.5
-  }
-
-  public createText(string: string): Text {
-    const text = new Text(string, { align: 'center' })
-    text.text = string
-    text.x = -text.width * 0.5
-    text.y = this.stageHeight * 0.5 - 100.0
-    this.addChild(text)
-
-    return text
+    this.x = 0
+    this.y = 0
   }
 
   public get stageWidth(): number {

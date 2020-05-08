@@ -10,7 +10,7 @@ settings.PRECISION_FRAGMENT = PRECISION.HIGH //It says that this makes iOS looks
 settings.ANISOTROPIC_LEVEL = 16
 
 const app = new Application({
-  backgroundColor: 0x000000,
+  backgroundColor: 0x2d2d2d,
   width: WIDTH,
   height: HEIGHT,
   resolution: window.devicePixelRatio || 1,
