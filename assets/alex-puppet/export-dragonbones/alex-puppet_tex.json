@@ -1,0 +1,155 @@
+{
+  "width": 2048,
+  "height": 2048,
+  "imagePath": "alex-puppet_tex.png",
+  "name": "alex-puppet",
+  "SubTexture": [
+    { "name": "iris.png.001", "x": 2036, "y": 2, "width": 7, "height": 14 },
+    {
+      "name": "forearm.png.004",
+      "x": 1043,
+      "y": 937,
+      "width": 390,
+      "height": 388
+    },
+    { "name": "bicep.png.003", "x": 2, "y": 754, "width": 361, "height": 527 },
+    {
+      "name": "lapel_bottom_back.png.001",
+      "x": 757,
+      "y": 1283,
+      "width": 221,
+      "height": 649
+    },
+    {
+      "name": "lapel_top_back.png.001",
+      "x": 1043,
+      "y": 1628,
+      "width": 370,
+      "height": 209
+    },
+    {
+      "name": "coat_bottom_.png.001",
+      "x": 1043,
+      "y": 2,
+      "width": 943,
+      "height": 378
+    },
+    {
+      "name": "ponytail.png.001",
+      "x": 1449,
+      "y": 382,
+      "width": 414,
+      "height": 493
+    },
+    {
+      "name": "leg_back.png.001",
+      "x": 1043,
+      "y": 1327,
+      "width": 294,
+      "height": 299
+    },
+    {
+      "name": "leg_front.png.001",
+      "x": 1449,
+      "y": 1296,
+      "width": 344,
+      "height": 343
+    },
+    {
+      "name": "waist.png.001",
+      "x": 1449,
+      "y": 877,
+      "width": 424,
+      "height": 417
+    },
+    {
+      "name": "coat_top.png.001",
+      "x": 2,
+      "y": 2,
+      "width": 1039,
+      "height": 750
+    },
+    { "name": "hair.png.001", "x": 728, "y": 754, "width": 253, "height": 359 },
+    {
+      "name": "hair_top.png.001",
+      "x": 365,
+      "y": 1673,
+      "width": 298,
+      "height": 179
+    },
+    {
+      "name": "chest.png.001",
+      "x": 1043,
+      "y": 382,
+      "width": 404,
+      "height": 553
+    },
+    {
+      "name": "neck.png.001",
+      "x": 1865,
+      "y": 382,
+      "width": 168,
+      "height": 243
+    },
+    {
+      "name": "hair_fill.png.001",
+      "x": 1875,
+      "y": 877,
+      "width": 90,
+      "height": 138
+    },
+    { "name": "ahoge.png.001", "x": 1865, "y": 756, "width": 93, "height": 67 },
+    {
+      "name": "head.png.001",
+      "x": 1795,
+      "y": 1296,
+      "width": 195,
+      "height": 300
+    },
+    { "name": "eye.png.001", "x": 1988, "y": 307, "width": 39, "height": 23 },
+    {
+      "name": "hair_behind_ear.png.001",
+      "x": 1988,
+      "y": 2,
+      "width": 46,
+      "height": 209
+    },
+    { "name": "ear.png.001", "x": 1988, "y": 213, "width": 46, "height": 92 },
+    {
+      "name": "lapel_bottom_front.png.001",
+      "x": 2,
+      "y": 1283,
+      "width": 233,
+      "height": 608
+    },
+    {
+      "name": "lapel_top_front.png.001",
+      "x": 1449,
+      "y": 1641,
+      "width": 309,
+      "height": 215
+    },
+    { "name": "hand.png", "x": 1795, "y": 1598, "width": 189, "height": 198 },
+    {
+      "name": "forearm.png.001",
+      "x": 365,
+      "y": 1283,
+      "width": 390,
+      "height": 388
+    },
+    {
+      "name": "bicep.png.001",
+      "x": 365,
+      "y": 754,
+      "width": 361,
+      "height": 527
+    },
+    {
+      "name": "pocket.png.001",
+      "x": 1865,
+      "y": 627,
+      "width": 164,
+      "height": 127
+    }
+  ]
+}

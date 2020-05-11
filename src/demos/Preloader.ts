@@ -12,6 +12,9 @@ export class Preloader extends Container {
     'cecille-puppet/export-dragonbones/cecille-puppet_ske.json',
     'cecille-puppet/export-dragonbones/cecille-puppet_tex.json',
     'cecille-puppet/export-dragonbones/cecille-puppet_tex.png',
+    'alex-puppet/export-dragonbones/alex-puppet_ske.json',
+    'alex-puppet/export-dragonbones/alex-puppet_tex.json',
+    'alex-puppet/export-dragonbones/alex-puppet_tex.png',
   ]
   private onComplete: Function
 
