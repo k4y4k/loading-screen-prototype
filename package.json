@@ -28,7 +28,7 @@
     "prettier": "2.0.5",
     "pretty-quick": "2.0.1",
     "stats.js": "0.17.0",
-    "ts-loader": "7.0.3",
+    "ts-loader": "7.0.4",
     "typescript": "3.8.3",
     "unused-webpack-plugin": "^2.4.0",
     "webpack": "4.43.0",
