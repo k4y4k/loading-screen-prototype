@@ -5,6 +5,8 @@ import { Main } from './Main'
 export const WIDTH = window.innerWidth < 1920 ? window.innerWidth : 1920
 export const HEIGHT = window.innerHeight < 1080 ? window.innerHeight : 1080
 
+export const LANDSCAPE = window.innerWidth > window.innerHeight ? true : false
+
 settings.STRICT_TEXTURE_CACHE = true //Forces you to load you stuff before using it
 settings.PRECISION_FRAGMENT = PRECISION.HIGH //It says that this makes iOS looks better
 settings.ANISOTROPIC_LEVEL = 16

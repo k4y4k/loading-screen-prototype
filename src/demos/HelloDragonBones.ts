@@ -1,7 +1,7 @@
 import { BaseDemo } from './BaseDemo'
 import dragonBones from '../lib/dragonBones'
 import { Loader } from 'pixi.js'
-import { HEIGHT, WIDTH } from '../index'
+import { HEIGHT, WIDTH, LANDSCAPE } from '../index'
 
 /**
  * How to use
@@ -41,21 +41,59 @@ export class HelloDragonBones extends BaseDemo {
       ].texture
     )
 
-    const armatureDisplay = factory.buildArmatureDisplay(
-      'Armature',
-      'cecille-puppet'
+    const cecille = factory.buildArmatureDisplay('Armature', 'cecille-puppet')
+
+    factory.parseDragonBonesData(
+      Loader.shared.resources[
+        'alex-puppet/export-dragonbones/alex-puppet_ske.json'
+      ].data
     )
-    armatureDisplay.animation.play('New_Animation')
+
+    factory.parseTextureAtlasData(
+      Loader.shared.resources[
+        'alex-puppet/export-dragonbones/alex-puppet_tex.json'
+      ].data,
+      Loader.shared.resources[
+        'alex-puppet/export-dragonbones/alex-puppet_tex.png'
+      ].texture
+    )
+
+    const alex = factory.buildArmatureDisplay('Armature', 'alex-puppet')
+
+    cecille.animation.play('New_Animation')
 
     // set anchors and place
-    armatureDisplay.anchor.set(0.5, 1)
-    armatureDisplay.x = WIDTH * 0.2
-    armatureDisplay.y = HEIGHT * 0.733
+    alex.anchor.set(0.25, 1)
+
+    // if the aspect ratio isn't 16:9, we need to make sure Alex isn't
+    // face-planting into the edge of the screen
+
+    // console.log(HEIGHT / WIDTH)
+
+    console.log(LANDSCAPE)
+
+    if (LANDSCAPE) {
+      console.log('alex to the side')
+      alex.x = WIDTH * 0.3
+    } else {
+      console.log('alex in the middle')
+      alex.x = WIDTH * 0.5
+    }
+
+    alex.y = HEIGHT * 0.55
+    cecille.anchor.set(0.5, 1)
+    cecille.x = WIDTH * 0.2
+    cecille.y = HEIGHT * 0.8
 
     // scale down
-    armatureDisplay.scale.x = 0.2
-    armatureDisplay.scale.y = 0.2
+    alex.scale.x = 0.29
+    alex.scale.y = 0.29
+    cecille.scale.x = 0.18
+    cecille.scale.y = 0.18
 
-    this.addChild(armatureDisplay)
+    this.addChild(alex)
+
+    // cecille in front of alex?
+    this.addChild(cecille)
   }
 }
