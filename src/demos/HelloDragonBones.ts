@@ -62,21 +62,18 @@ export class HelloDragonBones extends BaseDemo {
 
     cecille.animation.play('New_Animation')
 
+    cecille.animation.timeScale = 1.33
+
+    alex.animation.play('walk_anim')
+
     // set anchors and place
     alex.anchor.set(0.25, 1)
 
     // if the aspect ratio isn't 16:9, we need to make sure Alex isn't
     // face-planting into the edge of the screen
-
-    // console.log(HEIGHT / WIDTH)
-
-    console.log(LANDSCAPE)
-
     if (LANDSCAPE) {
-      console.log('alex to the side')
       alex.x = WIDTH * 0.3
     } else {
-      console.log('alex in the middle')
       alex.x = WIDTH * 0.5
     }
 
@@ -91,9 +88,10 @@ export class HelloDragonBones extends BaseDemo {
     cecille.scale.x = 0.18
     cecille.scale.y = 0.18
 
-    this.addChild(alex)
+    alex.debugDraw = true
+    cecille.debugDraw = true
 
-    // cecille in front of alex?
+    this.addChild(alex)
     this.addChild(cecille)
   }
 }
