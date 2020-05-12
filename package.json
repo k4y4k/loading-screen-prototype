@@ -29,7 +29,7 @@
     "pretty-quick": "2.0.1",
     "stats.js": "0.17.0",
     "ts-loader": "7.0.4",
-    "typescript": "3.8.3",
+    "typescript": "3.9.2",
     "unused-webpack-plugin": "2.4.0",
     "webpack": "4.43.0",
     "webpack-cli": "3.3.11",
