@@ -68,17 +68,13 @@
         margin: 0;
       }
 
-      .character-images {
-        margin: 5px;
-      }
-
-      .character-image {
-        display: inline-block;
-        font-size: 32pt;
+      .character-image img {
+        max-width: 64px;
+        max-height: 64px;
       }
 
       #overlay-middle-text {
-        margin-top: 10px;
+        margin: 10px 0;
       }
 
       #overlay-bottom-text {
@@ -112,8 +108,10 @@
         </p>
         <p id="overlay-middle-text">On this outing:</p>
         <div class="character-images">
-          <span class="character-image">👴</span
-          ><span class="character-image">👵</span>
+          <span class="character-image"> <img src="img/alex-face.svg" /> </span>
+          <span class="character-image">
+            <img src="img/cecille-face.svg" />
+          </span>
         </div>
         <button id="overlay-bottom-text">Onwards!</button>
       </div>
