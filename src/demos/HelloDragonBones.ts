@@ -60,8 +60,8 @@ export class HelloDragonBones extends BaseDemo {
 
     const alex = factory.buildArmatureDisplay('Armature', 'alex-puppet')
 
-    cecille.animation.play('New_Animation')
-    cecille.animation.timeScale = 1.33
+    cecille.animation.play('cecille-puppetAction')
+    cecille.animation.timeScale = 1
     alex.animation.play('walk_anim')
 
     // set anchors and place
@@ -78,13 +78,16 @@ export class HelloDragonBones extends BaseDemo {
     alex.y = HEIGHT * 0.55
     cecille.anchor.set(0.5, 1)
     cecille.x = WIDTH * 0.2
-    cecille.y = HEIGHT * 0.8
+    cecille.y = HEIGHT * 0.825
 
     // scale down
-    alex.scale.x = 0.29
-    alex.scale.y = 0.29
+    alex.scale.x = 0.28
+    alex.scale.y = 0.28
     cecille.scale.x = 0.18
     cecille.scale.y = 0.18
+
+    // cecille.debugDraw = true;
+    // alex.debugDraw = true;
 
     this.addChild(alex)
     this.addChild(cecille)
