@@ -11,9 +11,9 @@
     "commit": "commit"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.3.5",
-    "@commitlint/config-conventional": "8.3.4",
-    "@commitlint/prompt-cli": "8.3.5",
+    "@commitlint/cli": "9.1.2",
+    "@commitlint/config-conventional": "9.1.2",
+    "@commitlint/prompt-cli": "9.1.2",
     "@types/dat.gui": "0.7.5",
     "@types/stats.js": "0.17.0",
     "@typescript-eslint/eslint-plugin": "2.33.0",
